@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail Match
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Detail
+		{{ joueur.pseudo }}</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<h2>Information du joueur</h2>
+				<p>Pseudo :
+					{{ joueur.pseudo }}
+				</p>
+				<p>Id Discord :
+					{{ joueur.discordId }}
+				</p>
+				<p>Id Steam :
+					{{ joueur.steamId }}
+				</p>
+				<p>Niveau de tryhard :
+					{{ joueur.tryhardMeter }}</p>
+				<p>Jeux Préféré :</p>
+				<ul>
+					{% for jeux in joueur.jeu %}
+						<li>{{ jeux.nom }}</li>
+					{% endfor %}
+				</ul>
+				<p>Genre de jeux préféré :</p>
+				<ul>
+					{% for categories in joueur.categorie %}
+						<li>{{ categories.nom }}</li>
+					{% endfor %}
+				</ul>
+				<p>Description :
+					{{ joueur.description }}</p>
+				{# Verifiez si l'utilisateur n'a pas déja matcher avec cette autre joueur #}
+				{% if countOfMatchFromUser == 0 and countOfMatchFromOtherUser == 0 %} 
+                	<a href="{{ path('match', {'id': joueur.id}) }}" class="btn btn-primary">Je match !</a>
+				{# Si un autre joueur n'a pas matcher avec l'utilisateur #}
+				{% elseif countOfMatchFromUser == 0 and countOfMatchFromOtherUser == 1 %}
+					<div class="btn btn-secondary">Cette personne vous à matché !</div>
+				{# Si l'utilisateur a déja matcher avec cette personne #}
+				{% elseif countOfMatchFromUser == 1 and countOfMatchFromOtherUser == 0 %}
+					<div class="btn btn-secondary">Déja matché !</div>
+				{% endif %}
+			</div>
+			<div class="col-6">
+				<img src="{{ asset(images_profil ~ app.user.profilImg) }}" alt="Image de Profil" class="m-2 border border-secondary">
+			</div>
+		</div>
+	</div>
+{% endblock %}

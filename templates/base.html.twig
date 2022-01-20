@@ -14,6 +14,109 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% if hidden is not defined %}
+            <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">Menu</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="{{ path("home")}}" class="nav-link align-middle px-0">
+                                    <i class="fas fa-home"></i> <span class="ms-1 d-none d-sm-inline">Acceuil</span>
+                                </a>
+                            </li>
+                            {% if not is_granted("ROLE_JOUEUR") %}
+                            <li>
+                                <a href="{{ path("app_login")}}" class="nav-link px-0 align-middle">
+                                    <i class="fas fa-sign-in-alt"></i> <span class="ms-1 d-none d-sm-inline">Connexion</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ path("app_register")}}" class="nav-link px-0 align-middle">
+                                    <i class="fas fa-feather-alt"></i> <span class="ms-1 d-none d-sm-inline">Inscription</span></a>
+                            </li>
+                            {% endif %}
+                            {% if is_granted("ROLE_JOUEUR") %}
+                            <li>
+                                <a href="{{ path("matching") }}" class="nav-link px-0 align-middle">
+                                    <i class="fas fa-user-plus"></i> <span class="ms-1 d-none d-sm-inline">Matching</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ path("match") }}" class="nav-link px-0 align-middle">
+                                    <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline">Vos matchs</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ path("your_match") }}" class="nav-link px-0 align-middle">
+                                    <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline">Ils vous ont matché</span></a>
+                            </li>
+                            {% endif %}
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <li>
+                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                    <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Menu Admin</span></a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                    <li class="w-100 ps-5">
+                                        <a href="{{ path("admin_joueur_index") }}" class="nav-link px-0"> <span class="d-none d-sm-inline">Membres</span></a>
+                                    </li>
+                                    <li class="w-100 ps-5">
+                                        <a href="{{ path("admin_jeu_index") }}" class="nav-link px-0"> <span class="d-none d-sm-inline">Jeux</span></a>
+                                    </li>
+                                    <li class="w-100 ps-5">
+                                        <a href="{{ path("admin_categorie_index") }}" class="nav-link px-0"> <span class="d-none d-sm-inline">Catégories</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            <!--
+                            <li>
+                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                            </li>
+                            -->
+                        </ul>
+                        {% if is_granted("ROLE_JOUEUR") %}
+                        <hr>
+                        <div class="dropdown pb-4">
+                            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset(images_profil ~ app.user.profilImg) }}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                                <span class="d-none d-sm-inline mx-1">{{app.user.pseudo}}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                <li><a class="dropdown-item" href="{{ path("profil") }}"><i class="fas fa-user"></i> Profil</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ path("app_logout") }}"><i class="fas fa-sign-out-alt"></i> Deconnexion</a></li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col py-3">
+                {% endif %}
+            {% block body %}{% endblock %}
+                </div>
+                </div>
+            </div>
     </body>
 </html>

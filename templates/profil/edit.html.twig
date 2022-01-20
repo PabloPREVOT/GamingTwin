@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre profil{% endblock %}
+
+{% block body %}
+    <h1>Modification de {{app.user.pseudo}}</h1>
+
+    {{ include('profil/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('profil') }}">Retourner à votre profil</a>
+
+{% endblock %}

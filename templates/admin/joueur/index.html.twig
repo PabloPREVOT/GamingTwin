@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des joueurs{% endblock %}
+
+{% block body %}
+    <h1>Joueurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Roles</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Discord_id</th>
+                <th>Steam_id</th>
+                <th>Niveau de tryhard de 0 à 10</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for joueur in joueurs %}
+            <tr>
+                <td>{{ joueur.id }}</td>
+                <td>{{ joueur.pseudo }}</td>
+                <td>{{ autorisations(joueur) }}</td>
+                <td>{{ joueur.nom }}</td>
+                <td>{{ joueur.prenom }}</td>
+                <td>{{ joueur.email }}</td>
+                <td>{{ joueur.discordId }}</td>
+                <td>{{ joueur.steamId }}</td>
+                <td>{{ joueur.tryhardMeter }}</td>
+                <td>{{ joueur.description }}</td>
+                <td>
+                    <a href="{{ path('admin_joueur_show', {'id': joueur.id}) }}">Détails</a>
+                    <a href="{{ path('admin_joueur_edit', {'id': joueur.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">Aucun Résultat</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_joueur_new') }}">Ajouter un nouveau</a>
+{% endblock %}

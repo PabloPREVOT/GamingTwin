@@ -1,0 +1,163 @@
+{{ form_start(form) }}
+        <p>{{ form_label(form.pseudo) }} :</p>
+    <p>{{ form_widget(form.pseudo) }}</p>
+
+    <p>{{ form_label(form.password) }} :</p>
+    <p>{{ form_widget(form.password) }}</p>
+
+    <p>{{ form_label(form.nom) }} :</p>
+    <p>{{ form_widget(form.nom) }}</p>
+
+    <p>{{ form_label(form.prenom) }} :</p>
+    <p>{{ form_widget(form.prenom) }}</p>
+
+    <p>{{ form_label(form.email) }} :</p>
+    <p>{{ form_widget(form.email) }}</p>
+
+    <p>{{ form_label(form.discord_id) }} :</p>
+    <p>{{ form_widget(form.discord_id) }}</p>
+
+    <p>{{ form_label(form.steam_id) }} :</p>
+    <p>{{ form_widget(form.steam_id) }}</p>
+
+    <p>{{ form_label(form.tryhard_meter) }} :</p>
+    <p>{{ form_widget(form.tryhard_meter) }}</p>
+
+    <p>{{ form_label(form.description) }} :</p>
+    {{ form_widget(form.description) }}
+
+    <br>
+
+    <p>{{ form_label(form.categorie) }}</p>
+    {{ form_widget(form.categorie, {label_attr:{class:"checkbox-inline"}}) }}
+
+    <br>
+
+    <p>{{ form_label(form.jeu) }}</p>
+    {{ form_widget(form.jeu, {label_attr:{class:"checkbox-inline"}}) }}
+
+    <br>
+
+    <p>{{ form_label(form.profil_img) }}</p>
+
+    <br>
+
+    <div class="d-flex justify-content-evenly mt-5">
+        <div>
+            <img src="{{ asset(images_profil) }}icone1.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone1</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone2.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone2</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone3.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone3</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone4.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone4</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone5.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone5</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone6.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone6</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone7.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone7</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone8.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone8</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone9.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone9</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone10.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone10</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone11.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone11</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone12.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone12</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icone13.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone13</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-evenly">
+        <div>
+            <img src="{{ asset(images_profil) }}icones14.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone14</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones15.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone15</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones16.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">icone16</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones17.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">icone17</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones18.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">icone18</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones19.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">icone19</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones20.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">icone20</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones21.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone21</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones22.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone22</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones23.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone23</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones24.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone24</p>
+        </div>
+        <div>
+            <img src="{{ asset(images_profil) }}icones25.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone25</p>
+        </div>
+        <div class="mb-5">
+            <img src="{{ asset(images_profil) }}icones26.png" alt="hugenerd" width="80" height="80" class="rounded-circle">
+            <p class="text-center">Icone26</p>
+        </div>
+    </div>
+
+    
+    {{ form_widget(form.profil_img, {label_attr:{class:"radio-inline"}}) }}
+
+    <br>
+    
+
+<div class="d-flex justify-content-center">
+    <button class="btn btn-primary me-5">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}

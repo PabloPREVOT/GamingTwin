@@ -1,0 +1,48 @@
+{{ form_start(form) }}
+    <p>{{ form_label(form.pseudo) }} :</p>
+    <p>{{ form_widget(form.pseudo) }}</p>
+    
+    <p>{{ form_label(form.roles)  }}</p>
+    <div>{{ form_widget(form.roles, {label_attr:{class:"checkbox-inline"}}) }}</div>
+
+    <br>
+
+    <p>{{ form_label(form.password) }} :</p>
+    <p>{{ form_widget(form.password) }}</p>
+
+    <p>{{ form_label(form.nom) }} :</p>
+    <p>{{ form_widget(form.nom) }}</p>
+
+    <p>{{ form_label(form.prenom) }} :</p>
+    <p>{{ form_widget(form.prenom) }}</p>
+
+    <p>{{ form_label(form.email) }} :</p>
+    <p>{{ form_widget(form.email) }}</p>
+
+    <p>{{ form_label(form.discord_id) }} :</p>
+    <p>{{ form_widget(form.discord_id) }}</p>
+
+    <p>{{ form_label(form.steam_id) }} :</p>
+    <p>{{ form_widget(form.steam_id) }}</p>
+
+    <p>{{ form_label(form.tryhard_meter) }} :</p>
+    <p>{{ form_widget(form.tryhard_meter) }}</p>
+
+    <p>{{ form_label(form.description) }} :</p>
+    {{ form_widget(form.description) }}
+
+    <br>
+
+    <p>{{ form_label(form.categorie) }}</p>
+    {{ form_widget(form.categorie, {label_attr:{class:"checkbox-inline"}}) }}
+
+    <br>
+
+    <p>{{ form_label(form.jeu) }}</p>
+    {{ form_widget(form.jeu, {label_attr:{class:"checkbox-inline"}}) }}
+
+    <br>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary me-5">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

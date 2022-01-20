@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matching !
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Les joueurs qui vous ressemble</h1>
+    <div class="d-flex">
+        <div>
+            <p class="align-self-center">Filtre par niveau de tryhard :</p>
+        </div>
+        <div class="btn btn-primary">
+            <a href="{{ path('matchingFilter', {'id': "weakTryhard"}) }}" class="text-light text-decoration-none">De 0 à 2</a>
+        </div>
+        <div class="btn btn-primary">
+            <a href="{{ path('matchingFilter', {'id': "littleWeakTryhard"}) }}" class="text-light text-decoration-none">De 2 à 4</a>
+        </div>
+        <div class="btn btn-primary">
+            <a href="{{ path('matchingFilter', {'id': "mediumTryhard"}) }}" class="text-light text-decoration-none">De 4 à 6</a>
+        </div>
+        <div class="btn btn-primary">
+            <a href="{{ path('matchingFilter', {'id': "littleStrongTryhard"}) }}" class="text-light text-decoration-none">De 6 à 8</a>
+        </div>
+        <div class="btn btn-primary">
+            <a href="{{ path('matchingFilter', {'id': "strongTryhard"}) }}" class="text-light text-decoration-none">De 8 à 10</a>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div>
+            <p class="align-self-center">Filtre par Jeux</p>
+        </div>
+        <div>
+            <form action="{{ path('matching') }}" method="post">
+            <select name="jeu" id="jeu">
+                    <option value=""></option>
+                {% for jeu in jeux %}
+                    <option value="{{ jeu.id }}">{{ jeu.nom }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div>
+            <p class="align-self-center">Filtre par Catégories</p>
+        </div>
+        <div>
+            <form action="{{ path('matching') }}" method="post">
+            <select name="categorie" id="categorie">
+                    <option value=""></option>
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+
+	<div class="d-flex flex-wrap">
+        {% for joueur in joueurs %}
+        {% if app.user.id != joueur.id %}
+            <div class="card col-3">
+                <img src="{{ asset(images_profil ~ joueur.profilImg) }}" class="card-img-top" alt="image de profil">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">{{ joueur.pseudo }}</h5>
+                    <p class="card-text">Niveau de tryhard : {{ joueur.tryhardMeter }}</p>
+                    <div>
+                        <p>Jeux préférés :</p>
+                            <ul>
+                                {% for jeu in joueur.jeu %}
+                                    <li>{{ jeu.nom }}</li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                    <div>
+                        <p>Catégories de jeux préférés :</p>
+                            <ul>
+                                {% for categorie in joueur.categorie %}
+                                    <li>{{ categorie.nom }}</li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ path('matchingDetail', {'id': joueur.id}) }}" class="btn btn-primary">Voir détail</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+	</div>
+{% endblock %}

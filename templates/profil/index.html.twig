@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil
+{% endblock %}
+
+{% block body %}
+	{# <h1 class="text-center">{{ app.user.prenom ~ " " ~ app.user.prenom }}</h1>
+	<div class="container">
+		<div>
+			<ul>
+				<li>Pseudo:
+					{{app.user.pseudo}}</li>
+				<li>nom:
+					{{app.user.nom}}</li>
+				<li>Prenom:
+					{{app.user.prenom}}</li>
+				<li>Mon email:
+					{{app.user.email}}</li>
+				<li>Steam Id:
+					{{ app.user.steamId }}</li>
+				<li>Discord Id:
+					{{ app.user.discordId }}</li>
+				<li>Chill / Tryhard (0 à 10) :
+					{{ app.user.tryhardmeter }}</li>
+				<li>Liste jeux:
+					<ul>
+						{% for jeux in app.user.jeu %}
+							<li>{{ jeux.nom }}</li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li>Categorie jeux:
+					<ul>
+						{% for categories in app.user.categorie %}
+							<li>{{ categories.nom }}</li>
+						{% endfor %}
+					</ul>
+				</li>
+				<li>Description:
+					{{app.user.description}}</li>
+			</ul>
+		</div>
+        <div class="d-flex justify-content-center">
+			<div>
+            	<a class="btn btn-primary" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Modifier</a>
+			</div>
+	    </div>
+	</div> #}
+		<h1 class="text-center mb-5">
+		{{ app.user.prenom ~ " " ~ app.user.prenom }}</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-6 d-flex flex-column justify-content-between">
+				<h2 class="mb-3">Vos informations</h2>
+				<div>
+				<p>Pseudo :
+					{{ app.user.pseudo }}
+				</p>
+				<p>Id Discord :
+					{{ app.user.discordId }}
+				</p>
+				<p>Id Steam :
+					{{ app.user.steamId }}
+				</p>
+				<p>Niveau de tryhard :
+					{{ app.user.tryhardMeter }}</p>
+				<p>Jeux Préféré :</p>
+				<ul>
+					{% for jeux in app.user.jeu %}
+						<li>{{ jeux.nom }}</li>
+					{% endfor %}
+				</ul>
+				<p>Genre de jeux préféré :</p>
+				<ul>
+					{% for categories in app.user.categorie %}
+						<li>{{ categories.nom }}</li>
+					{% endfor %}
+				</ul>
+				<p>Description :
+					{{ app.user.description }}</p>
+				</div>
+				<div class="d-flex">
+					<div>
+            			<a class="btn btn-primary" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Modifier</a>
+					</div>
+	    		</div>
+			</div>
+			<div class="col-6 mt-5">
+				<img src="{{ asset(images_profil ~ app.user.profilImg) }}" alt="Image de Profil" class="p-2 border border-secondary">
+			</div>
+		</div>
+	</div>
+	
+</div>{% endblock %}

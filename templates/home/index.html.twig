@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+    <div class="bg-secondary">
+        <div class="mb-5">
+            <h1 class="text-center">GamingTwin</h1>
+        </div>
+        <div class="mb-5 pb-5">
+            <h2 class="text-center">Slogan</h2>
+        </div>
+        <div class="d-flex justify-content-center pb-5">
+        {% if not is_granted("ROLE_JOUEUR") %}
+            <a class="btn btn-primary me-5" href="{{ path("app_login")}}" role="button">Se connecter</a>
+            <a class="btn btn-primary ms-5" href="{{ path("app_register")}}" role="button">Inscription</a>
+        {% else %}
+            <a class="btn btn-primary" href="{{ path("profil")}}" role="button">Votre profil</a>
+        {% endif %}
+        </div>
+    </div>
+    <div class="d-flex justify-content-evenly div_home">
+        <div class="red w-50 text-center img_home">Image</div>
+        <div class="blue w-50 text-center">Lorem</div>
+    </div>
+    <div class="d-flex justify-content-evenly div_home">
+        <div class="blue w-50 text-center">Lorem</div>
+        <div class="red w-50 text-center img_home">Image</div>
+    </div>
+{% endblock %}
