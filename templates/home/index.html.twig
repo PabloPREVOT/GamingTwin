@@ -1,30 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}Bienvenue - GamingTwin
+{% endblock %}
 
 {% block body %}
-    <div class="bg-secondary">
-        <div class="mb-5">
-            <h1 class="text-center">GamingTwin</h1>
-        </div>
-        <div class="mb-5 pb-5">
-            <h2 class="text-center">Slogan</h2>
-        </div>
-        <div class="d-flex justify-content-center pb-5">
-        {% if not is_granted("ROLE_JOUEUR") %}
-            <a class="btn btn-primary me-5" href="{{ path("app_login")}}" role="button">Se connecter</a>
-            <a class="btn btn-primary ms-5" href="{{ path("app_register")}}" role="button">Inscription</a>
-        {% else %}
-            <a class="btn btn-primary" href="{{ path("profil")}}" role="button">Votre profil</a>
-        {% endif %}
-        </div>
-    </div>
-    <div class="d-flex justify-content-evenly div_home">
-        <div class="red w-50 text-center img_home">Image</div>
-        <div class="blue w-50 text-center">Lorem</div>
-    </div>
-    <div class="d-flex justify-content-evenly div_home">
-        <div class="blue w-50 text-center">Lorem</div>
-        <div class="red w-50 text-center img_home">Image</div>
-    </div>
+
+	<div class="corps w-100">
+		<div class="div_banniere">
+			<img src="img/home/Banniere.png" alt="banniere" class="w-100">
+		</div>
+		<!--Call-to-actions  -->
+		<div class="div_buttons d-flex justify-content-evenly pb-5">
+            {% if not is_granted("ROLE_JOUEUR") %}
+			<a class="btn cta me-80" href="{{ path("app_login")}}" role="button">Se connecter</a>
+			<a class="btn cta ms-30" href="{{ path("app_register")}}" role="button">Inscription</a>
+            {% else %}
+            <a class="btn cta ms-30" href="{{ path("profil")}}" role="button">Votre profil</a>
+            {% endif %}
+		</div>
+		<div class="d-flex justify-content-evenly div_home">
+			<div class="img_home">
+                <img src="img/home/ImageHome.png" alt="imgaccueil">
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+			    <p class="police text-center">GamerTwin vous permet de constituer votre nouvelle équipe<br>et de rencontrer de nouveaux joueurs avec le même état d'esprit.</p>	
+            </div>
+		</div>
+		<div class="d-flex justify-content-evenly div_home mt-5 mb-5">
+			<div class="d-flex flex-column justify-content-center">
+				<p class="police text-center">Arrête de jouer seul !<br>- Trouve tes nouveaux coéquipiers et intègre une meilleure communautée.</p>
+			</div>
+			<div class="img_home">
+                <img src="img/home/ImageHome.png" alt="imgaccueil">
+            </div>
+		</div>
+
+
+		<!-- Footer -->
+
+		<div class="b-example-divider"></div>
+
+		<div class="container">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+				<div class="col-md-4 d-flex align-items-center">
+					<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+						<svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+					</a>
+					<div class="footer_flex">
+						<span class="text-muted">&copy; GamingTwin</span>
+						<a class="about" href="#">Qui sommes-nous?</a>
+					</div>
+				</div>
+
+				<img class="logofooter" src="img/home/objets_fortement_contrastés.png" alt="">
+			</footer>
+		</div>
+
+		<!-- FIN FOOTER -->
+	</div>
+
+	<!-- //////////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<!-- <div class="bg-secondary">
+		<div class="mb-5">
+			<h1 class="text-center">GamingTwin</h1>
+		</div>
+		<div class="mb-5 pb-5">
+			<h2 class="text-center">Slogan</h2>
+		</div>
+		<div class="d-flex justify-content-center pb-5">
+			{% if not is_granted("ROLE_JOUEUR") %}
+				<a class="btn btn-primary me-5" href="{{ path("app_login")}}" role="button">Se connecter</a>
+				<a class="btn btn-primary ms-5" href="{{ path("app_register")}}" role="button">Inscription</a>
+			{% else %}
+				<a class="btn btn-primary" href="{{ path("profil")}}" role="button">Votre profil</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="d-flex justify-content-evenly div_home">
+		<div class="red w-50 text-center img_home">Image</div>
+		<div class="blue w-50 text-center">Lorem</div>
+	</div>
+	<div class="d-flex justify-content-evenly div_home">
+		<div class="blue w-50 text-center">Lorem</div>
+		<div class="red w-50 text-center img_home">Image</div>
+	</div> -->
 {% endblock %}

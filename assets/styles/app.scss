@@ -1,19 +1,149 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bootstrap/scss/bootstrap";
 
-.div_home{
-    height: 200px;
-}
-
-.red{
-    background-color: red;
-}
-
-.blue{
-    background-color: blue;
-}
+* {
+    box-sizing: border-box;
+  }
 
 .menu-h{
     min-height: 100vh !important;
     max-height: 100% !important;
 }
+
+body {
+    font-family: sans-serif;
+}
+
+p{
+    margin: 0;
+}
+
+/////////////////////////////////////////////////////////////////////// Home ///////////////////////////////////////////////////////////////////////////////
+
+.div_banniere img{
+    height: 670px;
+}
+
+// Background de la page
+
+.corps{
+    background-color: #F7F1E1;
+  }
+
+// Bouton
+
+.div_buttons{
+    position: relative;
+    bottom: 40px;
+  }
+
+  .cta {
+    display: block;
+    padding: 10px 45px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: black;
+    background: #FF8A1E;
+    transition: 1s;
+    box-shadow: 6px 6px 0 black;
+    transform: skewX(-15deg);
+    justify-content: space-between; 
+    width: 25%; 
+}
+
+ /* Animation */
+.cta:focus {
+    outline: none; 
+ }
+ 
+ .cta:hover {
+     transition: 0.5s;
+     box-shadow: 10px 10px 0 #FBC638;
+ }
+ 
+ .cta span:nth-child(2) {
+     transition: 0.5s;
+     margin-right: 0px;
+ }
+ 
+ .cta:hover span:nth-child(2) {
+     transition: 0.5s;
+     margin-right: 45px;
+ }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+ // Taille img des block (les autre block se mettent a la meme taille)
+
+ .div_home img{
+    height: 200px;
+}
+
+// Texte block
+
+.police{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+  }
+
+// Footer
+
+.logofooter{
+    width: 8%;
+  }
+  .footer_flex{
+    display: flex;
+    flex-direction: column;
+  }
+  .about{
+    color: #000;
+  }
+  ///////////////////////////////////////////////////////////////////// Media /////////////////////////////////////////////////////////////////////////////
+  @media screen and (min-width: 2560px){
+    .div_banniere img{
+        height: 900px;
+    }
+  }
+  @media screen and (max-width: 1440px){
+    .div_banniere img{
+        height: 600px;
+    }
+    // Taille de la police des boutons
+    .cta {
+        font-size: 25px;
+    }
+    .div_buttons{
+        bottom: 35px;
+      }
+  }
+
+  @media screen and (max-width: 1024px){
+    .div_banniere img{
+        height: 500px;
+    }
+      // Taille de la police des boutons
+    .cta {
+        font-size: 15px;
+    }
+     // taille de pocile des texte des blocks
+    .police{
+        font-size: 15px;
+    }
+     // Taille img block
+    .div_home img{
+        height: 150px;
+        width: 400px;
+    }
+    .div_buttons{
+        bottom: 25px;
+      }
+  }
+  @media screen and (max-width: 425px){
+    .container{
+        margin-top: 100px; // Ne marche pas ??
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////// FIN ///////////////////////////////////////////////////////////////////////////////
+  

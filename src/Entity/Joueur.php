@@ -66,6 +66,9 @@ class Joueur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'joueur2', targetEntity: Synchro::class, orphanRemoval: true)]
     private $synchros2;
 
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $supprimer;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -344,6 +347,18 @@ class Joueur implements UserInterface, PasswordAuthenticatedUserInterface
                 $synchros2->setJoueur2(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSupprimer(): ?bool
+    {
+        return $this->supprimer;
+    }
+
+    public function setSupprimer(?bool $supprimer): self
+    {
+        $this->supprimer = $supprimer;
 
         return $this;
     }

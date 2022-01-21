@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
             );
 
             $user->setRoles(["ROLE_JOUEUR"]);
-            $user->setProfilImg("Icone1.png");
+            $user->setProfilImg("icone1.png");
 
             $entityManager->persist($user);
             $entityManager->flush();

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Joueur;
 use App\Form\ProfilType;
+use App\Repository\SynchroRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,5 +43,16 @@ class ProfilController extends AbstractController
             'joueur' => $joueur,
             'form' => $form,
         ]);
+    }
+
+    #[Route('profil/suppr/{id}', name: 'profil_joueur_suppr', methods: ['POST'])]
+    public function suppr(Request $request, Joueur $joueur, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$joueur->getId(), $request->request->get('_token'))) {
+            $joueur->setSupprimer(true);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_logout', [], Response::HTTP_SEE_OTHER);
     }
 }

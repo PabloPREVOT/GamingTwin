@@ -37,6 +37,7 @@ class JoueurController extends AbstractController
             $nouveauMdp = $hasher->hashPassword($joueur, $mdp);
             $joueur->setPassword($nouveauMdp);
             //------------------------------
+            $joueur->setProfilImg("icone1.png");
 
             $entityManager->persist($joueur);
             $entityManager->flush();

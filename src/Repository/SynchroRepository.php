@@ -47,6 +47,26 @@ class SynchroRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findMatchByUser1($currentUserId)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.joueur1 = :val')
+            ->setParameter('val', $currentUserId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findMatchByUser2($currentUserId)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.joueur2 = :val')
+            ->setParameter('val', $currentUserId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Synchro
     {
