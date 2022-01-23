@@ -8,6 +8,7 @@ use App\Entity\Joueur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -24,10 +25,12 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('pseudo', TextType::class, [
-                "label" => "Pseudo",
+                "label" => "Pseudo :",
                 "required" => true,
                 'constraints' => [
                     new Length([
+                        "min" => 2,
+                        "minMessage" => "Le pseudo doit faire au minimum {{ limit }} caractères",
                         "max" => 20,
                         "maxMessage" => "Le pseudo doit faire au maximum {{ limit }} caractères",
                     ]),
@@ -43,12 +46,21 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('chartreToxic', CheckboxType::class, [
+                "label" => "Je certifie de respecter les autres joueurs",
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Veuillez acceptez ce champ',
+                    ]),
+                ],
+            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                "label" => "Mot de passe",
+                "label" => "Mot de passe :",
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrez votre mot de passe',
@@ -62,7 +74,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add("nom", TextType::class, [
-                "label" => "nom",
+                "label" => "nom :",
                 "required" => true,
                 "constraints" => [
                     new Length([
@@ -74,7 +86,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add("prenom", TextType::class, [
-                "label" => "prénom",
+                "label" => "prénom :",
                 "required" => true,
                 "constraints" => [
                     new Length([
@@ -86,19 +98,18 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
-            ->add("email", TextType::class, [
-                "label" => "email",
+            ->add("email", EmailType::class, [
+                "label" => "email :",
                 "required" => true,
                 "constraints" => [
                     new Length([
                         "max" => 50,
                         "maxMessage" => "L'email peut faire au maximum {{ limit }} charactères",
-
                     ])
                 ]
             ])
             ->add("discord_id", TextType::class, [
-                "label" => "Id discord",
+                "label" => "Id discord :",
                 "required" => false,
                 "constraints" => [
                     new Length([
@@ -108,7 +119,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add("steam_id", TextType::class, [
-                "label" => "Id steam",
+                "label" => "Id steam :",
                 "required" => false,
                 "constraints" => [
                     new Length([
@@ -126,8 +137,14 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add("description", TextareaType::class, [
-                "label" => "Votre description",
+                "label" => "Votre description :",
                 "required" => false,
+                "constraints" => [
+                    new Length([
+                        "max" => 400,
+                        "maxMessage" => "La descripion peut faire au maximum {{ limit }} charactères",
+                    ])
+                ]
             ])
             ->add('categorie', EntityType::class, [
                 "label" => "Catégorie de jeux que vous préférez :",

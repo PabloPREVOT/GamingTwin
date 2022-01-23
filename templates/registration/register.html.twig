@@ -1,66 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
 
 {% block body %}
+	<div class="h-100 bg-registration-form">
+		<h1 class="text-center text-orange">Inscription</h1>
 
-	<h1 class="text-center">Inscription</h1>
+		<div class="px-5 py-4 w-75 mx-auto rounded-3 d-flex flex-column align-item-center bg-orange">
+			{{ form_start(registrationForm) }}
 
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.pseudo) }}
+			</div>
 
-	{{ form_start(registrationForm) }}
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.plainPassword) }}
+			</div>
 
-	<div class="form-control">
-		{{ form_row(registrationForm.pseudo) }}
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.nom) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.prenom) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.email) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.discord_id) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.steam_id) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				<span class="pe-5">{{ form_label(registrationForm.tryhard_meter) }}
+					:</span>
+				0{{ form_widget(registrationForm.tryhard_meter) }}10
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.description) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.jeu) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.categorie) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+
+			<div class="form-control my-2 bg-secondary">
+				<span class="text-danger">{{ form_row(registrationForm.chartreToxic) }}</span>
+			</div>
+
+			<div class="w-25 mx-auto"><button type="submit" class="btn btn-primary">S'inscrire</button>
+			{{ form_end(registrationForm) }}
+			</div>
+		</div>
+
 	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.plainPassword) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.nom) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.prenom) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.email) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.discord_id) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.steam_id) }}
-	</div>
-
-	<div class="form-control">
-		<span class="pe-5">{{ form_label(registrationForm.tryhard_meter) }}
-			:</span>
-		{{ form_widget(registrationForm.tryhard_meter) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.description) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.jeu) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.categorie) }}
-	</div>
-
-	<div class="form-control">
-		{{ form_row(registrationForm.agreeTerms) }}
-	</div>
-
-	<button type="submit" class="btn btn-primary">S'inscrire</button>
-	{{ form_end(registrationForm) }}
-
-
 {% endblock %}

@@ -20,20 +20,23 @@ class SynchroController extends AbstractController
     public function matching(JoueurRepository $jr, JeuRepository $jeuRepository, Request $rq, CategorieRepository $cr): Response
     {
         if($rq->request->get("jeu")) {
+            $joueurtrie = $jeuRepository->find($rq->request->get("jeu"))->getJoueurs();
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jeuRepository->find($rq->request->get("jeu"))->getJoueurs(),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         } elseif($rq->request->get("categorie")){
+            $joueurtrie = $cr->find($rq->request->get("categorie"))->getJoueurs();
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $cr->find($rq->request->get("categorie"))->getJoueurs(),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         } else {
+            $joueurtrie = $jr->findByTryhardMeterSame($this->getUser()->getTryhardMeter(), $this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeterSame($this->getUser()->getTryhardMeter(), $this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
@@ -44,36 +47,41 @@ class SynchroController extends AbstractController
     public function matchingFiltre($id, JoueurRepository $jr, JeuRepository $jeuRepository, CategorieRepository $cr): Response
     {
         if($id === "weakTryhard"){
+            $joueurtrie = $jr->findByTryhardMeter0_2($this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeter0_2($this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         }
         if($id === "littleWeakTryhard"){
+            $joueurtrie = $jr->findByTryhardMeter2_4($this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeter2_4($this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         }
         if($id === "mediumTryhard"){
+            $joueurtrie = $jr->findByTryhardMeter4_6($this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeter4_6($this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         }
         if($id === "littleStrongTryhard"){
+            $joueurtrie = $jr->findByTryhardMeter6_8($this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeter6_8($this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
         }
         if($id === "strongTryhard"){
+            $joueurtrie = $jr->findByTryhardMeter8_10($this->getUser()->getId());
             return $this->render('synchro/matching.html.twig', [
-                'joueurs' => $jr->findByTryhardMeter8_10($this->getUser()->getId()),
+                'joueurs' => $joueurtrie,
                 'jeux' => $jeuRepository->findAll(),
                 'categories' => $cr->findAll(),
             ]);
