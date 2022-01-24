@@ -10,57 +10,56 @@
 		<div class="px-5 py-4 w-75 mx-auto rounded-3 d-flex flex-column align-item-center bg-dark">
 			{{ form_start(registrationForm) }}
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.pseudo) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.plainPassword) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.nom) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.prenom) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.email) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.discord_id) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.steam_id) }}
 			</div>
 
-			<div class="form-control my-2 corps">
-				<span class="pe-5">{{ form_label(registrationForm.tryhard_meter) }}
-					:</span>
-				0{{ form_widget(registrationForm.tryhard_meter) }}10
+			<div class="form-control my-2 d-flex">
+				<span class="pe-5">{{ form_label(registrationForm.tryhard_meter) }}:</span>
+				<span class="pe-2">0</span> {{ form_widget(registrationForm.tryhard_meter) }} <span class="ps-2">10</span>
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.description) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.jeu) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.categorie) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				{{ form_row(registrationForm.agreeTerms) }}
 			</div>
 
-			<div class="form-control my-2 corps">
+			<div class="form-control my-2">
 				<span class="text-danger">{{ form_row(registrationForm.chartreToxic) }}</span>
 			</div>
 

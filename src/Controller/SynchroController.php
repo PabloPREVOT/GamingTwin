@@ -109,6 +109,38 @@ class SynchroController extends AbstractController
         return $this->redirectToRoute('matching');
     }
 
+    #[Route('/matching_detail/{id}/supr', name: 'matchingDetailSupr', methods: ['POST'])]
+    public function suprMach($id, SynchroRepository $sr, JoueurRepository $jr, EntityManagerInterface $ei): Response
+    {
+        $joueur = $jr->find($id);
+
+        if($joueur){
+            $allMatchWithCurrentUserAndThisId = $sr->findMatchByCurrentUser($this->getUser()->getId(), $id);
+            if (count($allMatchWithCurrentUserAndThisId) == 1){
+                $ei->remove($allMatchWithCurrentUserAndThisId[0]); // $allMatchWithCurrentUserAndThisId est un tableau avec 1 seul objet donc on peut donner l'objet avec l'index 0
+                $ei->flush();
+            }
+        }
+
+        return $this->redirectToRoute('match', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/matching_detail/{id}/supr2', name: 'matchingDetailSupr2', methods: ['POST'])]
+    public function suprMach2($id, SynchroRepository $sr, JoueurRepository $jr, EntityManagerInterface $ei): Response
+    {
+        $joueur = $jr->find($id);
+
+        if($joueur){
+            $allMatchWithThisIdAndCurrentUser = $sr->findMatchByOtherUser($this->getUser()->getId(), $id);
+            if (count($allMatchWithThisIdAndCurrentUser) == 1){
+                $ei->remove($allMatchWithThisIdAndCurrentUser[0]); // $allMatchWithCurrentUserAndThisId est un tableau avec 1 seul objet donc on peut donner l'objet avec l'index 0
+                $ei->flush();
+            }
+        }
+
+        return $this->redirectToRoute('your_match', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/match/{id?}', name: 'match', methods: ['GET'])]
     public function match($id, JoueurRepository $jr, SynchroRepository $sr, EntityManagerInterface $entityManager): Response
     {

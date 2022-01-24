@@ -51,11 +51,11 @@
               </div>
 			  <div class="card mt-3 p-3 text-center">
 				<div>
-					<a class="btn btn-primary mb-3" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Editer</a>
+					<a class="btn btn-primary w-100 mb-2" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Editer</a>
 				</div>
 				<form method="post" action="{{ path('profil_joueur_suppr', {'id': app.user.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer votre compte ?');">
 					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
-					<button class="btn btn-danger">Supprimer votre compte</button>
+					<button class="btn btn-danger w-100">Supprimer votre compte</button>
 				</form>
 			  </div>
             </div>
@@ -119,7 +119,7 @@
 						<div class="col-sm-4 d-flex flex-column justify-content-center">
                       	<h6 class="mb-0">Niveau de tryhard</h6>
                     	</div>
-                      <div class="progress progress-bar-profil mb-8 align-self-center" style="height: 8px">
+                      <div class="progress progress-bar-profil mb-8 align-self-center pe-0" style="height: 8px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: {{ app.user.tryhardMeter }}0%"></div>
                       </div>
 					

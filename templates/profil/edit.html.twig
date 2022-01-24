@@ -3,10 +3,16 @@
 {% block title %}Modifier votre profil{% endblock %}
 
 {% block body %}
-    <h1>Modification de {{app.user.pseudo}}</h1>
+<div class="h-100 bg-registration-form corps">
+    <h1 class="text-center text-orange pt-5 mb-5">Modification de votre profil</h1>
+
+    <div class="px-5 py-4 w-75 mx-auto rounded-3 d-flex flex-column align-item-center bg-dark text-light">
 
     {{ include('profil/_form.html.twig', {'button_label': 'Modifier'}) }}
 
     <a href="{{ path('profil') }}">Retourner à votre profil</a>
 
+    </div>
+
+</div>
 {% endblock %}

@@ -3,9 +3,73 @@
 {% block title %}Vos matchs{% endblock %}
 
 {% block body %}
-    <h1 class="text-center pt-5 mb-5">Les joueurs que vous avez matchés !</h1>
+<div class="h-100 matching-body px-5">
+    <h1 class="text-center pt-5 mb-5">Vos matchs !</h1>
 
-    <div class="d-flex flex-wrap">
+    <div class="row flex-wrap">
+        {% if matchs is empty %}
+            <p class="text-danger text-center">Aucun match trouvé, Pour trouver des joueurs <i class="fas fa-arrow-right"></i> <a href="{{ path("matching") }}" class="text-decoration-none">Matching</a></p>
+        {% endif %}
+        
+        {% for match in matchs %}
+            <div class="col-lg-4">
+                <div class="text-center card-box heigth-matching-card d-flex flex-column">
+                    <div class="member-card pt-2 pb-2">
+                        <div class="thumb-lg member-thumb mx-auto"><img src="{{ asset(images_profil ~ match.joueur2.profilImg) }}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                        <div class="my-2">
+                            <h4>{{ match.joueur2.pseudo }}</h4>
+                            <p class="text-muted">Niveau de tryhard <span>: </span><span class="text-pink">{{ match.joueur2.tryhardMeter }}</span></p>
+                        </div>
+                        <div class="d-flex justify-content-center w-100">
+                            <div class="progress mb-8 progress-bar-matching" style="height: 8px">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ match.joueur2.tryhardMeter }}0%"></div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light"><a href="{{ path('matchingDetail', {'id': match.joueur2.id}) }}" class="text-light text-decoration-none">Voir détail</a></button>
+                        <div class="mt-4">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mt-3">
+                                        <h4>Jeux</h4>
+                                        <ul class="list-group list-group-flush">
+                                            {% for jeu in match.joueur2.jeu %}
+                                                {% if loop.index <= 2 %}
+                                                    <li class="list-group-item text-muted">{{ jeu.nom }}</li>
+                                                {% elseif loop.index == 3 and loop.index != loop.length %}
+                                                    <li class="list-group-item text-muted">{{ jeu.nom ~ "...(" ~ (loop.length - 3) ~ "autres)" }}</li>
+                                                {% elseif loop.index == 3 and loop.index == loop.length %}
+                                                    <li class="list-group-item text-muted">{{ jeu.nom }}</li>
+                                                {% endif %} 
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mt-3">
+                                        <h4>Catégorie</h4>
+                                        <ul class="list-group list-group-flush">
+                                            {% for categorie in match.joueur2.categorie %}
+                                                {% if loop.index <= 2 %}
+                                                    <li class="list-group-item text-muted">{{ categorie.nom }}</li>
+                                                {% elseif loop.index == 3 and loop.index != loop.length %}
+                                                    <li class="list-group-item text-muted">{{ categorie.nom ~ "...(" ~ (loop.length - 3) ~ "autres)" }}</li>
+                                                {% elseif loop.index == 3 and loop.index == loop.length %}
+                                                    <li class="list-group-item text-muted">{{ categorie.nom }}</li>
+                                                {% endif %} 
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+	</div>
+</div>
+
+    {# <div class="d-flex flex-wrap">
         {% if matchs is empty %}
             <p class="text-danger mx-auto">Aucun match trouvé, Pour trouver des joueurs <i class="fas fa-arrow-right"></i> <a href="{{ path("matching") }}" class="text-decoration-none">Matching</a></p>
         {% endif %}
@@ -37,5 +101,5 @@
                 </div>
             </div>
         {% endfor %}
-	</div>
+	</div> #}
 {% endblock %}

@@ -35,7 +35,6 @@ class RegistrationFormType extends AbstractType
                         "maxMessage" => "Le pseudo doit faire au maximum {{ limit }} caractères",
                     ]),
                 ],
-
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 "label" => "Conditions générales d'utilisation",

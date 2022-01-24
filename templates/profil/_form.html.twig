@@ -1,29 +1,29 @@
 {{ form_start(form) }}
-        <p>{{ form_label(form.pseudo) }} :</p>
+        <p>{{ form_label(form.pseudo) }}</p>
     <p>{{ form_widget(form.pseudo) }}</p>
 
-    <p>{{ form_label(form.password) }} :</p>
+    <p>{{ form_label(form.password) }}</p>
     <p>{{ form_widget(form.password) }}</p>
 
-    <p>{{ form_label(form.nom) }} :</p>
+    <p>{{ form_label(form.nom) }}</p>
     <p>{{ form_widget(form.nom) }}</p>
 
-    <p>{{ form_label(form.prenom) }} :</p>
+    <p>{{ form_label(form.prenom) }}</p>
     <p>{{ form_widget(form.prenom) }}</p>
 
-    <p>{{ form_label(form.email) }} :</p>
+    <p>{{ form_label(form.email) }}</p>
     <p>{{ form_widget(form.email) }}</p>
 
-    <p>{{ form_label(form.discord_id) }} :</p>
+    <p>{{ form_label(form.discord_id) }}</p>
     <p>{{ form_widget(form.discord_id) }}</p>
 
-    <p>{{ form_label(form.steam_id) }} :</p>
+    <p>{{ form_label(form.steam_id) }}</p>
     <p>{{ form_widget(form.steam_id) }}</p>
 
     <p>{{ form_label(form.tryhard_meter) }} :</p>
-    <p>{{ form_widget(form.tryhard_meter) }}</p>
+    <div class="form-control d-flex"><span class="pe-2">0</span>{{ form_widget(form.tryhard_meter) }}<span class="ps-2">10</span></div>
 
-    <p>{{ form_label(form.description) }} :</p>
+    <p>{{ form_label(form.description) }}</p>
     {{ form_widget(form.description) }}
 
     <br>
