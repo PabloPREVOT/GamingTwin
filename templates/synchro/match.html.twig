@@ -3,9 +3,12 @@
 {% block title %}Vos matchs{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Les joueurs que vous avez matchés !</h1>
+    <h1 class="text-center pt-5 mb-5">Les joueurs que vous avez matchés !</h1>
 
     <div class="d-flex flex-wrap">
+        {% if matchs is empty %}
+            <p class="text-danger mx-auto">Aucun match trouvé, Pour trouver des joueurs <i class="fas fa-arrow-right"></i> <a href="{{ path("matching") }}" class="text-decoration-none">Matching</a></p>
+        {% endif %}
         {% for match in matchs %}
             <div class="card col-3">
                 <img src="{{ asset(images_profil ~ match.joueur2.profilImg) }}" class="card-img-top" alt="image de profil">

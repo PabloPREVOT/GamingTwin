@@ -5,56 +5,56 @@
 
 {% block body %}
 <div class="h-100 matching-body px-5">
-	<h1 class="text-center">Les joueurs qui vous ressemble</h1>
+	<h1 class="text-center pt-5 mb-5">Les joueurs qui vous ressemble</h1>
     <div class="d-flex">
-        <div>
-            <p class="align-self-center">Filtre par niveau de tryhard :</p>
+        <div class="d-flex flex-column justify-content-center ps-0">
+            <p>Filtre par niveau de tryhard :</p>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn btn-primary ms-2">
             <a href="{{ path('matchingFilter', {'id': "weakTryhard"}) }}" class="text-light text-decoration-none">De 0 à 2</a>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn btn-primary ms-2">
             <a href="{{ path('matchingFilter', {'id': "littleWeakTryhard"}) }}" class="text-light text-decoration-none">De 2 à 4</a>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn btn-primary ms-2">
             <a href="{{ path('matchingFilter', {'id': "mediumTryhard"}) }}" class="text-light text-decoration-none">De 4 à 6</a>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn btn-primary ms-2">
             <a href="{{ path('matchingFilter', {'id': "littleStrongTryhard"}) }}" class="text-light text-decoration-none">De 6 à 8</a>
         </div>
-        <div class="btn btn-primary">
+        <div class="btn btn-primary ms-2">
             <a href="{{ path('matchingFilter', {'id': "strongTryhard"}) }}" class="text-light text-decoration-none">De 8 à 10</a>
         </div>
     </div>
-    <div class="d-flex">
-        <div>
-            <p class="align-self-center">Filtre par Jeux</p>
+    <div class="d-flex my-3">
+        <div class="d-flex flex-column justify-content-center ps-0">
+            <p>Filtre par Jeux :</p>
         </div>
         <div>
-            <form action="{{ path('matching') }}" method="post">
+            <form action="{{ path('matching') }}" method="post" class="ms-2">
             <select name="jeu" id="jeu">
                     <option value=""></option>
                 {% for jeu in jeux %}
                     <option value="{{ jeu.id }}">{{ jeu.nom }}</option>
                 {% endfor %}
             </select>
-            <button class="btn btn-primary" type="submit">Rechercher</button>
+            <button class="btn btn-primary ms-2" type="submit">Rechercher</button>
             </form>
         </div>
     </div>
-    <div class="d-flex">
-        <div>
-            <p class="align-self-center">Filtre par Catégories</p>
+    <div class="d-flex mb-5">
+        <div class="d-flex flex-column justify-content-center ps-0">
+            <p class="align-self-center">Filtre par Catégories :</p>
         </div>
-        <div class="mb-4">
-            <form action="{{ path('matching') }}" method="post">
+        <div>
+            <form action="{{ path('matching') }}" method="post" class="ms-2">
             <select name="categorie" id="categorie">
                     <option value=""></option>
                 {% for categorie in categories %}
                     <option value="{{ categorie.id }}">{{ categorie.nom }}</option>
                 {% endfor %}
             </select>
-            <button class="btn btn-primary" type="submit">Rechercher</button>
+            <button class="btn btn-primary ms-2" type="submit">Rechercher</button>
             </form>
         </div>
     </div>
@@ -62,7 +62,7 @@
 	<div class="row flex-wrap">
         {% for joueur in joueurs %}
         {% if app.user.id != joueur.id %}
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="text-center card-box heigth-matching-card d-flex flex-column">
                     <div class="member-card pt-2 pb-2">
                         <div class="thumb-lg member-thumb mx-auto"><img src="{{ asset(images_profil ~ joueur.profilImg) }}" class="rounded-circle img-thumbnail" alt="profile-image"></div>

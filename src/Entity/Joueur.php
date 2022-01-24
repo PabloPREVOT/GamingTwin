@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
+ * @UniqueEntity(fields={"pseudo"}, message="Ce pseudo est déja utilisé")
  */
 #[ORM\Entity(repositoryClass: JoueurRepository::class)]
 class Joueur implements UserInterface, PasswordAuthenticatedUserInterface
