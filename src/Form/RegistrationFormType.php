@@ -50,7 +50,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Veuillez acceptez ce champ',
+                        'message' => 'Veuillez acceptez la chartre',
                     ]),
                 ],
             ])
@@ -73,7 +73,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add("nom", TextType::class, [
-                "label" => "nom :",
+                "label" => "Nom :",
                 "required" => true,
                 "constraints" => [
                     new Length([
@@ -85,7 +85,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add("prenom", TextType::class, [
-                "label" => "prénom :",
+                "label" => "Prénom :",
                 "required" => true,
                 "constraints" => [
                     new Length([
@@ -98,7 +98,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add("email", EmailType::class, [
-                "label" => "email :",
+                "label" => "Email :",
                 "required" => true,
                 "constraints" => [
                     new Length([

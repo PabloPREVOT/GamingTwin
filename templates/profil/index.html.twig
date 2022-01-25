@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-<div class="body h-100 d-flex">
+<div class="corps h-100 d-flex flex-column justify-content-between">
+<div class="body d-flex h-100">
 	<div class="container align-self-center">
     <div class="main-body">
           <div class="row gutters-sm">
@@ -51,7 +52,7 @@
               </div>
 			  <div class="card mt-3 p-3 text-center">
 				<div>
-					<a class="btn btn-primary w-100 mb-2" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Editer</a>
+					<a class="btn btn-primary w-100 mb-2 text-light" href="{{ path('profil_joueur_edit', {'id': app.user.id}) }}">Editer</a>
 				</div>
 				<form method="post" action="{{ path('profil_joueur_suppr', {'id': app.user.id}) }}" onsubmit="return confirm('Etes vous sur de supprimer votre compte ?');">
 					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
@@ -161,6 +162,22 @@
         </div>
     </div>
 </div>
+<div class="b-example-divider"></div>
+
+		<div class="container">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center border-top ps-3">
+				<div class="col-md-4 d-flex align-items-center">
+					<div class="footer_flex">
+						<span class="text-muted">&copy; GamingTwin</span>
+						<a class="about" href="#">Qui sommes-nous?</a>
+					</div>
+				</div>
+
+				<img class="logofooter" src="img/home/objets_fortement_contrastés.png" alt="">
+			</footer>
+		</div>
+</div>
+
 
 
 

@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-
+<div class="corps h-100 d-flex flex-column justify-content-between">
 	<div class="body h-100 d-flex">
 		<div class="container align-self-center">
 			<div class="main-body">
@@ -54,16 +54,16 @@
 							class="card mt-3 p-3 text-center">
 							{# Verifiez si l'utilisateur n'a pas déja matcher avec cette autre joueur #}
 							{% if countOfMatchFromUser == 0 and countOfMatchFromOtherUser == 0 %}
-								<a href="{{ path('match', {'id': joueur.id}) }}" class="btn btn-primary">Je match !</a>
+								<a href="{{ path('match', {'id': joueur.id}) }}" class="btn btn-primary text-light">Je match !</a>
 								{# Si un autre joueur n'a pas matcher avec l'utilisateur #}
 							{% elseif countOfMatchFromUser == 0 and countOfMatchFromOtherUser == 1 %}
-								<div class="btn btn-secondary mb-2">Cette personne vous à matché !</div>
+								<button disabled class="btn btn-secondary mb-2">Cette personne vous à matché !</button>
 								<form action="{{ path('matchingDetailSupr2', {'id': joueur.id}) }}" method="post" onsubmit="return confirm('Etes vous sur de supprimer ce match ?');">
 									<button class="btn btn-danger w-100" type="submit">Supprimer ce match</button>
 								</form>
 								{# Si l'utilisateur a déja matcher avec cette personne #}
 							{% elseif countOfMatchFromUser == 1 and countOfMatchFromOtherUser == 0 %}
-								<div class="btn btn-secondary mb-2">Déja matché !</div>
+								<button disabled class="btn btn-secondary mb-2">Déja matché !</button>
 								<form action="{{ path('matchingDetailSupr', {'id': joueur.id}) }}" method="post" onsubmit="return confirm('Etes vous sur de supprimer ce match ?');">
 									<button class="btn btn-danger w-100" type="submit">Supprimer ce match</button>
 								</form>
@@ -73,15 +73,6 @@
 					<div class="col-md-8">
 						<div class="card mb-3">
 							<div class="card-body">
-								<div class="row">
-									<div class="col-sm-4 d-flex flex-column justify-content-center">
-										<h6 class="mb-0">Email</h6>
-									</div>
-									<div class="col-sm-8 text-secondary">
-										<p>{{ joueur.email }}</p>
-									</div>
-								</div>
-								<hr>
 								<div class="row">
 									<div class="col-sm-4 d-flex flex-column justify-content-center">
 										<h6 class="mb-0">Id discord</h6>
@@ -156,10 +147,24 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
+			<div class="b-example-divider"></div>
+
+		<div class="container">
+			<footer class="d-flex flex-wrap justify-content-between align-items-center border-top ps-3">
+				<div class="col-md-4 d-flex align-items-center">
+					<div class="footer_flex">
+						<span class="text-muted">&copy; GamingTwin</span>
+						<a class="about" href="#">Qui sommes-nous?</a>
+					</div>
+				</div>
+
+				<img class="logofooter h-100" src="/img/home/objets_fortement_contrastés.png" alt="">
+			</footer>
+		</div>
+</div>
 
 
 	{# <h1 class="text-center">Detail
