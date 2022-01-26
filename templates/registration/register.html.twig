@@ -40,7 +40,9 @@
 
 			<div class="form-control my-2 d-flex">
 				<span class="pe-5">{{ form_label(registrationForm.tryhard_meter) }}:</span>
-				<span class="pe-2">0</span> {{ form_widget(registrationForm.tryhard_meter) }} <span class="ps-2">10</span>
+				<span class="pe-2">0</span>
+				{{ form_widget(registrationForm.tryhard_meter) }}
+				<span class="ps-2">10</span>
 			</div>
 
 			<div class="form-control my-2">
@@ -63,8 +65,9 @@
 				<span class="text-danger">{{ form_row(registrationForm.chartreToxic) }}</span>
 			</div>
 
-			<div class="w-25 mx-auto d-flex justify-content-center"><button type="submit" class="btn btn-primary w-50">S'inscrire</button>
-			{{ form_end(registrationForm) }}
+			<div class="w-25 mx-auto d-flex justify-content-center">
+				<button type="submit" class="btn btn-primary w-50">S'inscrire</button>
+				{{ form_end(registrationForm) }}
 			</div>
 		</div>
 
@@ -75,7 +78,10 @@
 				<div class="col-md-4 d-flex align-items-center">
 					<div class="footer_flex">
 						<span class="text-muted">&copy; GamingTwin</span>
-						<a class="about" href="{{ path("about")}}">Qui sommes-nous?</a>
+						<div>
+							<a class="about pe-2" href="{{ path("about")}}">Qui sommes-nous?</a>
+							<a class="about" href="#">CGU</a>
+						</div>
 					</div>
 				</div>
 
