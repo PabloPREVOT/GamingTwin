@@ -14,26 +14,44 @@ import './styles/app.scss';
 require("bootstrap");
 
 /////////////////////////////////////////////////////////////////////// Home ///////////////////////////////////////////////////////////////////////////////
-
-let img1 = document.getElementById("home_img_1");
-let img2 = document.getElementById("home_img_2");
-
-// window.addEventListener("resize", () => {
-//     if(document.querySelector('#width') <= 425){
-//         img1.getAttribute("src") = "img/home/ImageHomeMini.png";
-//         img2.getAttribute("src") = "img/home/matching.Mini.png";
-//     };
-// });
+//////////////////////////////////////////////////////////////////// Responsive ////////////////////////////////////////////////////////////////////////////
 
 window.addEventListener("resize", function() {
+    let img1 = document.getElementById("home_img_1");
+    let img2 = document.getElementById("home_img_2");
+
     if (window.screen.width <= 500){
-        img1.setAttribute("src", "img/home/ImageHomeMini.png");
+        if (img1 != null) {
+            img1.setAttribute("src", "img/home/ImageHomeMini.png");   
+        }
     }
     else if (window.screen.width <= 425){
-        img2.setAttribute("src", "img/home/broGamer.png");
+        if (img2 != null) {
+            img2.setAttribute("src", "img/home/broGamer.png");
+        }
     }
     else{
         img1.setAttribute("src", "img/home/ImageHome.png");
         img2.setAttribute("src", "img/home/broGamer.png");
     }
 })
+
+///////////////////////////////////////////////////////////////// Js modif profil-image /////////////////////////////////////////////////////////////////////////
+
+
+let select = document.getElementById("profil_profil_img");
+
+select.addEventListener("change", ()=> {
+    let selectValue = select.value.slice(0, 7);
+    let allImage = document.querySelectorAll(".img_profil_edit");
+
+    allImage.forEach(img => {
+        console.log(selectValue, img.getAttribute("src").slice(-11, -4));
+        if (selectValue == img.getAttribute("src").slice(-11, -4)) {
+            img.classList.add("borderSelectedImgProfil");
+        } else {
+            img.classList.remove("borderSelectedImgProfil")
+        }
+    });
+})
+

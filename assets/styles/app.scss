@@ -219,7 +219,6 @@ p{
 }
 
 
-
   ////////////////////////////////////////////////////////////////////// Profil /////////////////////////////////////////////////////////////////////////////
   .body{
     color: #1a202c;
@@ -277,6 +276,12 @@ p{
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+// Edit
+
+.borderSelectedImgProfil {
+    border: 2px solid red;
 }
 
 
