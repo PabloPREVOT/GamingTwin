@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jeu index{% endblock %}
+{% block title %}Index des jeux{% endblock %}
 
 {% block body %}
-    <h1>Jeu index</h1>
+    <h1>Jeux</h1>
 
     <table class="table">
         <thead>
@@ -21,17 +21,17 @@
                 <td>{{ jeu.nom }}</td>
                 <td>{{ jeu.description|slice(0, 25) }} ...</td>
                 <td>
-                    <a href="{{ path('admin_jeu_show', {'id': jeu.id}) }}">show</a>
-                    <a href="{{ path('admin_jeu_edit', {'id': jeu.id}) }}">edit</a>
+                    <a href="{{ path('admin_jeu_show', {'id': jeu.id}) }}">Détails</a>
+                    <a href="{{ path('admin_jeu_edit', {'id': jeu.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun résultat</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_jeu_new') }}">Create new</a>
+    <a href="{{ path('admin_jeu_new') }}">Ajouter un nouveau</a>
 {% endblock %}

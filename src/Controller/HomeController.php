@@ -29,4 +29,12 @@ class HomeController extends AbstractController
             "hidden" => false,
         ]);
     }
+
+    #[Route('/about', name: 'about')]
+    public function about(): Response
+    {
+        return $this->render('home/about.html.twig', [
+            "hidden" => false,
+        ]);
+    }
 }

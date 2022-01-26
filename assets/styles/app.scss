@@ -218,6 +218,51 @@ p{
     }
 }
 
+  ////////////////////////////////////////////////////////////////////// About /////////////////////////////////////////////////////////////////////////////
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #F7F1E1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F7F1E1;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .social-link:hover,
+  .social-link:focus {
+    background: #F7F1E1;
+    text-decoration: none;
+    color: #F7F1E1;
+  }
+.bandeau{
+    background-color: #F7F1E1;
+}
+.navcolor{
+    background-color: #FF8A1E;
+}
+.bandeau2{
+    background-color:#ebe1c8;
+
+
+}
+.imggamer{
+    width: 135%;
+    padding-right: 15%;
+}
+.textegamer{
+    padding-left: 15%;
+}
+.imglogo{
+    padding-left: 20%;
+}
+.textelogo{
+    padding-left: 10%;
+}
 
   ////////////////////////////////////////////////////////////////////// Profil /////////////////////////////////////////////////////////////////////////////
   .body{

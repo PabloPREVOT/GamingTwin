@@ -3,7 +3,7 @@
 {% block title %}Jeu{% endblock %}
 
 {% block body %}
-    <h1>Jeu</h1>
+    <h1>Jeu : {{ jeu.nom }}</h1>
 
     <table class="table">
         <tbody>
@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_jeu_index') }}">back to list</a>
+    <a href="{{ path('admin_jeu_index') }}">Retourner à la liste des jeux</a>
 
-    <a href="{{ path('admin_jeu_edit', {'id': jeu.id}) }}">edit</a>
+    <a href="{{ path('admin_jeu_edit', {'id': jeu.id}) }}">Modifier</a>
 
     {{ include('admin/jeu/_delete_form.html.twig') }}
 {% endblock %}

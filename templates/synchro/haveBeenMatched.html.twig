@@ -5,11 +5,11 @@
 
 {% block body %}
 	<div class="h-100 matching-body px-5">
-		<h1 class="text-center pt-5 mb-5">On vous matchs ?!</h1>
+		<h1 class="text-center pt-5 mb-5">On vous match !</h1>
 
 		<div class="row flex-wrap heightmatching">
 			{% if matchs is empty %}
-				<p class="text-danger text-center">Personne ne vous à Matché, Esseyer de personnaliser votre profil !
+				<p class="text-danger text-center">Personne ne vous a Matché, essayez de personnaliser votre profil !
 					<i class="fas fa-arrow-right"></i>
 					<a href="{{ path("profil") }}" class="text-decoration-none">Profil</a>
 				</p>
@@ -84,7 +84,7 @@
 				<div class="col-md-4 d-flex align-items-center">
 					<div class="footer_flex">
 						<span class="text-muted">&copy; GamingTwin</span>
-						<a class="about" href="#">Qui sommes-nous?</a>
+						<a class="about" href="{{ path("about")}}">Qui sommes-nous?</a>
 					</div>
 				</div>
 
@@ -94,37 +94,5 @@
 	</div>
 
 
-	{# <div class="d-flex flex-wrap">
-	        {% if matchs is empty %}
-	            <p class="text-danger mx-auto">Personne ne vous à Matché, Esseyer de personnaliser votre profil ! <i class="fas fa-arrow-right"></i> <a href="{{ path("profil") }}" class="text-decoration-none">Profil</a></p>
-	        {% endif %}
-	        {% for match in matchs %}
-	            <div class="card col-3">
-	                <img src="{{ asset(images_profil ~ match.joueur1.profilImg) }}" class="card-img-top" alt="image de profil">
-	                <div class="card-body d-flex flex-column justify-content-between">
-	                    <h5 class="card-title">{{ match.joueur1.pseudo }}</h5>
-	                    <p class="card-text">Niveau de tryhard : {{ match.joueur1.tryhardMeter }}</p>
-	                    <div>
-	                        <p>Jeux préférés :</p>
-	                            <ul>
-	                                {% for jeu in match.joueur1.jeu %}
-	                                    <li>{{ jeu.nom }}</li>
-	                                {% endfor %}
-	                            </ul>
-	                    </div>
-	                    <div>
-	                        <p>Catégories de jeux préférés :</p>
-	                            <ul>
-	                                {% for categorie in match.joueur1.categorie %}
-	                                    <li>{{ categorie.nom }}</li>
-	                                {% endfor %}
-	                            </ul>
-	                    </div>
-	                    <div class="text-center">
-	                        <a href="{{ path('matchingDetail', {'id': match.joueur1.id}) }}" class="btn btn-primary">Voir détail</a>
-	                    </div>
-	                </div>
-	            </div>
-	        {% endfor %}
-		</div> #}
+	
 {% endblock %}
